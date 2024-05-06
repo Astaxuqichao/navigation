@@ -48,7 +48,7 @@ class PotentialCalculator {
             setSize(nx, ny);
         }
         virtual ~PotentialCalculator() {}
-        virtual float calculatePotential(float* potential, unsigned char cost, int n, float prev_potential=-1){
+        virtual float calculatePotential(float* potential, float cost, int n, float prev_potential=-1){
             if(prev_potential < 0){
                 // get min of neighbors
                 float min_h = std::min( potential[n - 1], potential[n + 1] ),
