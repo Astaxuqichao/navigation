@@ -47,13 +47,13 @@ AStarExpansion::AStarExpansion(PotentialCalculator* p_calc, int xs, int ys) :
 bool AStarExpansion::calculatePotentials(unsigned char* costs, double start_x, double start_y, double end_x, double end_y,
                                         int cycles, float* potential) {
     queue_.clear();
-    int start_i = toIndex(start_x, start_y);
+    int start_i = toIndex(round(start_x), round(start_y));
     queue_.push_back(Index(start_i, 0));
 
     std::fill(potential, potential + ns_, POT_HIGH);
     potential[start_i] = 0;
 
-    int goal_i = toIndex(end_x, end_y);
+    int goal_i = toIndex(round(end_x), round(end_y));
     int cycle = 0;
 
     while (queue_.size() > 0 && cycle < cycles) {
@@ -76,8 +76,8 @@ bool AStarExpansion::calculatePotentials(unsigned char* costs, double start_x, d
     return false;
 }
 
-void AStarExpansion::add(unsigned char* costs, float* potential, float prev_potential, int next_i, int end_x,
-                         int end_y) {
+void AStarExpansion::add(unsigned char* costs, float* potential, float prev_potential, int next_i, double end_x,
+                         double end_y) {
     if (next_i < 0 || next_i >= ns_)
         return;
 

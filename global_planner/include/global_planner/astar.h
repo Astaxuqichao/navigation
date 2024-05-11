@@ -67,7 +67,7 @@ class AStarExpansion : public Expander {
         bool calculatePotentials(unsigned char* costs, double start_x, double start_y, double end_x, double end_y, int cycles,
                                 float* potential);
     private:
-        void add(unsigned char* costs, float* potential, float prev_potential, int next_i, int end_x, int end_y);
+        void add(unsigned char* costs, float* potential, float prev_potential, int next_i, double end_x, double end_y);
         std::vector<Index> queue_;
 };
 

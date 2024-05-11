@@ -103,7 +103,7 @@ void GlobalPlanner::initialize(std::string name, costmap_2d::Costmap2D* costmap,
 
         private_nh.param("old_navfn_behavior", old_navfn_behavior_, false);
         if(!old_navfn_behavior_)
-            convert_offset_ = 0.5;
+            convert_offset_ = 0.0;
         else
             convert_offset_ = 0.0;
 
