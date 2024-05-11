@@ -38,6 +38,7 @@
 #include <global_planner/grid_path.h>
 #include <algorithm>
 #include <stdio.h>
+#include <math.h>
 namespace global_planner {
 
 bool GridPath::getPath(float* potential, double start_x, double start_y, double end_x, double end_y, std::vector<std::pair<float, float> >& path) {
@@ -49,7 +50,7 @@ bool GridPath::getPath(float* potential, double start_x, double start_y, double 
     int c = 0;
     int ns = xs_ * ys_;
 
-    while (!(abs(current.first - start_x) < 1. && abs(current.second - start_y) < 1.)) {
+    while (!(fabs(current.first - start_x) < 1. && fabs(current.second - start_y) < 1.)) {
         float min_val = 1e10;
         int min_x = -1, min_y = -1;
         for (int xd = -1; xd <= 1; xd++) {
